@@ -39,7 +39,7 @@ public class Homework
     @Test
     public void findElementById()
     {
-       WebElement pollblock1= driver.findElement(By.id("poll-block-1"));
+        WebElement pollblock1= driver.findElement(By.id("poll-block-1"));
         System.out.println(pollblock1.getAttribute("id"));
         WebElement newslettersubscribeblock = driver.findElement(By.id("newsletter-subscribe-block"));
         System.out.println(newslettersubscribeblock.getAttribute("id"));
@@ -97,6 +97,49 @@ public class Homework
         System.out.println(elementLi4.getText());
 
     }
+     @Test
+     public void findElementXpath()
+     {
+         WebElement h2 = driver.findElement(By.xpath("//div[@class='topic-html-content-title']/h2[@class='topic-html-content-header']"));
+         System.out.println(h2.getText());
+         WebElement h3 = driver.findElement(By.xpath("//div[@class='column information']/h3"));
+         System.out.println(h3.getText());
+          WebElement p = driver.findElement(By.xpath("//div[@class='topic-html-content-body']/p"));
+         System.out.println(p.getText());
+         WebElement p2 = driver.findElement(By.xpath("//div[@class='topic-html-content-body']/p[2]"));
+         System.out.println(p2.getText());
+         List<WebElement> li = driver.findElements(By.xpath("//li"));
+         System.out.println(li.size());
+         System.out.println("----------------------------------------");
+
+
+         WebElement pollblock1 = driver.findElement(By.xpath("//div[@id='poll-block-1']/strong"));
+         System.out.println(pollblock1.getText());
+         WebElement newslettersubscribeblock = driver.findElement(By.xpath("//div[@id='newsletter-subscribe-block']/span"));
+         System.out.println(newslettersubscribeblock.getText());
+         System.out.println("-----------------------------------------");
+
+
+         WebElement rightside3 = driver.findElement(By.xpath("//div[@class='rightside-3']/div[@class='block block-newsletter']//strong"));
+         System.out.println(rightside3.getText());
+         WebElement title = driver.findElement((By.xpath("//*[@class='listbox']/div[@class='newsletter-subscribe-block']/span")));
+         System.out.println(title.getText());
+         WebElement footerdisclaimer = driver.findElement(By.xpath("//div[@class='block block-poll']/div[@class='title']/strong"));
+         System.out.println(footerdisclaimer.getText());
+         WebElement footerpoweredby = driver.findElement(By.xpath("//div[@class='poll']/strong"));
+         System.out.println(footerpoweredby.getText());
+
+         WebElement ElementLi2 = driver.findElement(By.xpath("//ul[@class='poll-options']/li[2]"));
+         System.out.println(ElementLi2.getText());
+         WebElement ElementLi4 = driver.findElement(By.xpath("//ul[@class='poll-options']/li[4]"));
+         System.out.println(ElementLi4.getText());
+
+
+
+     }
+
+
+
 
     @AfterMethod
     public void tearDown()

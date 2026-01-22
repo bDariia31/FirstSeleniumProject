@@ -131,5 +131,86 @@ public class FindElementTest {
 
 
   }
+
+  @Test
+    public void findElementByXpath()
+  {
+     //         // tag+[@attribute='value']
+      //        // tag+[2]  нумерация начинается с 1
+      //       // tag+[@attribute='value1' and @attr2='value2']
+      //        // tag+[@attribute='value1' not @attr2='value2']
+      //   методы :      text();    contains();  last();
+
+      // driver.findelement(By.cssSelector("h1");
+      driver.findElements((By.xpath("//h1")));
+      // driver.findElement(By.cssSelector("#city"));
+      driver.findElement(By.xpath("//input[@id='city']"));
+      //  driver.findElement(By.cssSelector(".telephone"));
+      driver.findElement(By.xpath("//a[@class='telephone']"));
+      // driver.findElement(By.cssSelector("[href='/search']"));
+      driver.findElement(By.xpath("//a[@href='/search']"));
+      //      driver.findElement(By.cssSelector("[for='city']"));
+      driver.findElement(By.xpath("//label[@for='city']"));
+
+
+      //  css - contains -> * ; Xpath * -> contains();
+     // driver.findElement(By.cssSelector("[href*='car']")); // ищет все пары которые содержат car
+      driver.findElement(By.xpath("//a[contains(@href,'car')]"));
+
+      // css - start -> ^ ; Xpath ^ -> starts-with();
+      //WebElement element = driver.findElement(By.cssSelector("[href^='/let']"));
+       driver.findElement(By.xpath("//a[starts-with(@href,'/let')]"));
+
+       // может искать по тексту
+       // Text
+
+      WebElement text1 = driver.findElement(By.xpath("//*[contains(text(),'This car exceeded my expectations')]"));
+      WebElement text2 =driver.findElement(By.xpath("//*[contains(.,'This car exceeded my expectations')]"));
+      System.out.println(text2.getText());
+
+      WebElement textSpan = driver.findElement(By.xpath("//span[text()=' Latest feedback from our customers ']"));
+      System.out.println(textSpan.getText());
+
+
+
+//      driver.findElement(By.cssSelector("a.navigation-link[href='/search']"));// tag+class+pare
+      WebElement element1 = driver.findElement(By.xpath("//a[@class='navigation-link' and @href='/search']"));
+      System.out.println(element1.getText());
+//      driver.findElement(By.cssSelector("div.social-networks")); // tag+class
+      WebElement element2 = driver.findElement(By.xpath("//div[@class='social-networks']"));
+      System.out.println(element2.getText());
+
+      // cssSelector-> div>a  ; Xpath -> div/a - one step
+      //cssSelector-> div a   ; Xpath -> div//a - one step or more steps
+
+
+      // driver.findElement(By.cssSelector(".logo>img")); // > one step below один шаг в низ
+      driver.findElement(By.xpath("//a[@class='logo']/img")); // слеш / это один шаг вниз
+      //      driver.findElement(By.cssSelector(".feedback .feedback-date")); // <space> one or more steps below пробел от одного до некоторого колисества шагов вниз
+      driver.findElement(By.xpath("//div[@class='feedback']//*[@class='feedback-date']")); // двойной слеш это пробел -one or more steps below
+      // пробел от одного до некоторого количества шагов вниз
+
+
+  }
+  @Test
+    public void findElementByXpathFamily()
+  {
+      //parent - если родиьель то шаг вверх
+      driver.findElement(By.xpath("//h1/parent::*"));
+      driver.findElement(By.xpath("//h1/parent::div"));
+      driver.findElement(By.xpath("//h1/.."));
+
+      // ancestor
+      driver.findElement(By.xpath("//h1/ancestor::*")); // html
+      driver.findElement(By.xpath("//h1/ancestor::div")); // two steps above (на верх)
+      driver.findElement(By.xpath("//h1/ancestor::div[2]")); // two steps above (на верх)
+
+
+
+  }
+
+
+
+
 }
 
